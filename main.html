@@ -1,0 +1,142 @@
+<div id="text">
+
+  <h2 class="pz_section" id="introduction"
+  ref="slide_introduction">Introduction </h2>
+
+  The
+  [http://en.wikipedia.org/wiki/Mutual_coherence_(linear_algebra),mutual
+  coherence], $\mu(A)$, of a matrix $A$ characterizes the spread of
+  its columns, and is useful in the theory and application of
+  [/?id=b007z,compressive sensing]. Roughly speaking, it is the cosine
+  of the minimum angle between any two columns of $A$. More precisely,
+  the mutual coherence is the maximum absolute value of the
+  <span class="pz_text" ref="angle_note">inner product between any two
+    normalized columns </span> $a_j$ and $a_k$:
+
+  $$
+  \mu(A)=\max\limits_{1\leq k,j\leq m, k\neq j } 
+  \frac{|a_k^T a_j|}{\|a_k\|_2 \|a_j\|_2} 
+  $$
+ 
+  If we consider the columns of $A$ as vectors (with magnitude and
+  direction), the mutual coherence tells us something about how __well
+  spread__ the directions of a collection of vectors are (at least,
+  how well spread the two __least__ spread vectors are). The mutual
+  coherence is in the range $0 \leq \mu \leq 1$, with lower values
+  indicating a greater spread.
+
+  <div class="pz_note" id="angle_note">
+    The inner product between normalized columns (vectors if you
+    prefer) is a
+    [http://en.wikipedia.org/wiki/Dot_product,generalization] of the
+    cosine of the angle between those columns/vectors.
+  </div>
+
+  <h2 class="pz_section" id="intuition" ref="slide_3vec">Intuition</h2>
+
+  <pzthumb src="mc_plot_1.svg" ref="slide_3vec"/>
+
+  For example, say $A$ consists of a red, blue and green vector
+
+  $$
+  A=\begin{bmatrix}
+  \color{red}{1}&\color{blue}{-1}&\color{green}{1}\\
+  \color{red}{1}&\color{blue}{2}&\color{green}{4}
+  \end{bmatrix}
+  $$
+
+  Plotting the three colored vectors yields a 
+  <span class='pz_slide_link' ref='slide_3vec'> geometric
+    interpretation</span> of $A$---each color corresponds to a
+    different column. The first row (i.e., first coefficient in a
+    column) corresponds to the horizontal axis, and the second row
+    corresponds to the vertical axis.
+
+  The cosine of the angle between any two vectors ranges between $-1$
+  and $1$, and its absolute value between $0$ and $1$. The mutual
+  coherence is the absolute value of the cosine of the *smallest*
+  angle between any of the vectors.
+
+  In this case the smallest angle is between the first column,
+  $[\color{red}{1~1}]^T$, and third column
+  $[\color{green}{1~4}]^T$. The angle is about $31^\circ$ and the
+  absolute value of the cosine is $\mu \approx 0.86$. Lets now
+  consider how to compute $\mu(A)$ in practice.
+
+  <h2 class="pz_section" id="computation" ref="slide_computation">
+    Computation
+  </h2>
+
+  We can <span class="pz_text" ref="comp_size_note">compute</span>
+  $\mu(A)$ by first normalizing the columns of $A$ to $A_n$,
+  then <span class="pz_text" ref="mcoh_comp_note">choosing the largest
+  off-diagonal term of $A_n^T A_n$</span>. In Octave:
+
+  <div class="pz_note" id="comp_size_note">
+    For very large $A$ this method will be slow and require a lot of
+    RAM---but it is perfectly fine for moderately sized problems.
+  </div>
+
+  <div class="pz_note" id="mcoh_comp_note">
+    Every off-diagonal element of $A_n^T A_n$ is an inner product of
+    two normalized columns of $A$. The same normalized inner products
+    that appear in the definition of $\mu(A)$ above.
+  </div>
+
+  For example, using $A$ from above:
+
+  <div class="left_col">
+    <div data-file="main.coffee"></div>
+  </div>    
+
+  <div class="right_col">
+    <div data-eval="main.coffee"></div>
+  </div>
+
+  <div class="clear"></div>
+
+  <h2 class="pz_section" id="bound" ref="slide_bound">Bound</h2>
+
+  <pzthumb src="bound_plot.svg" ref="slide_bound"/>
+
+  <span class="pz_text" ref="bruckstein_note">There is a limit to how
+    well spread a collection of vectors can possibly be </span>.  The
+    minimum angle for *three* vectors in *two* dimensions is
+    $120^\circ$ or less---we cannot move them any further
+    apart. Therefore, any matrix with three columns and two rows can
+    have a mutual coherence no less than $\mu=|\cos(120^\circ)|=0.5$.
+
+  More generally, for a matrix with $M$ rows and $N$ columns and $N>M$
+  we have a <span class="pz_text" ref="full_rank_note">bound</span>
+  $\mu\geq\mu_0$, where
+
+  $$
+  \mu_0 = \sqrt{\frac{N-M}{M(N-1)}}
+  $$
+
+  It is helpfull to consider the edge cases $N=M+1$ and $N\gg M$,
+  which yields the left and right boundaries in
+
+  $$
+  \frac{1}{M} \leq \mu_0 < \frac{1}{\sqrt M}
+  $$
+
+  As $M$ increases, we get a higher-dimensional space and thus it is
+  easier to achieve a large spread in vectors, or a small mutual
+  coherence.  Mutual coherence increases with $N$ (the number of
+  vectors in the space), from a minimum of $1/M$ up to a limit
+  $1/\sqrt M$, for evenly-spaced vectors.
+
+  <div class="pz_note" id="full_rank_note">
+    Strictly this bound is for matrices with full rank. 
+    $\mu=\mu_0$ corresponds to evenly spaced vectors.
+  </div>
+
+  <div class="pz_note" id="bruckstein_note">
+    Bruckstein, A.M., Donoho, D.L, Elad, M,
+    [http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.102.4697,
+    From Sparse Solutions of Systems of Equations to Sparse Modeling
+    of Signals and Images]
+  </div>
+
+</div>

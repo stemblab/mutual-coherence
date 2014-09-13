@@ -1,0 +1,155 @@
+<div id="slides" style="display: none;">
+
+  <div class="pz_slide" id="slide_toc" section="introduction">
+
+    <h3>Mutual Coherence</h3>
+
+    <div class="pz_slide_toc">
+      Table of contents:
+      <ul>
+	<li> <a href="#introduction">Introduction</a>
+	<li> <a href="#intuition">Intuition</a>
+	<li> <a href="#computation">Computation</a>
+	<li> <a href="#useful_bound">A Useful Bound</a>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="pz_slide" id="slide_introduction" section="introduction">
+
+    <h3>Introduction</h3>
+
+    <div class="pz_slide_body" style="padding-top: 15px">
+      <ul>
+	<li> Mutual coherence, $\mu(A)$, is a property of a matrix $A$.
+	<li> Useful for compressive sensing.
+	<li> Roughly: cosine of smallest angle between any two columns.
+	<li> Precisely: if $A=[a_1,...]$
+      </ul>
+      $$
+      \mu(A)=\max\limits_{1\leq k,j\leq m, k\neq j } \frac{|a_k^T a_j|}{\|a_k\|_2 \|a_j\|_2}
+      $$
+    </div>
+
+  </div>
+
+  <div class="pz_slide" id="slide_3vec" section="intuition">
+
+    <div class="pz_slide_heading">
+      <h3>Intuition (1/2)</h3>
+    </div>
+    
+    <div class="pz_slide_left_panel" style="padding-top: 15px">
+      <ul>
+	<li> Consider the columns of $A$ as vectors
+	<li> For example
+	  $$
+	  A=\begin{bmatrix}
+	  \color{red}{1}&\color{blue}{-1}&\color{green}{1}\\
+	  \color{red}{1}&\color{blue}{2}&\color{green}{4}
+	  \end{bmatrix}
+	  $$
+	<li> Three vectors in two-dimensional space
+      </ul>
+    </div>
+
+    <div class="pz_slide_right_panel">
+      <!--pzimg src="mc_plot_1.svg" height="420px"/-->
+      <img src="mc_plot_1.svg" height="420px">
+
+    </div>
+
+  </div>
+
+  <div class="pz_slide" id="slide_3vec_2" section="intuition">
+
+    <div class="pz_slide_heading">
+      <h3>Intuition (2/2)</h3>
+    </div>
+
+    <div class="pz_slide_left_panel" style="padding-top: 15px">
+      <ul>
+	<li> Smallest angle between any of the vectors: $\theta \approx 31^\circ$.
+	<li> Mutual coherence: $\mu=|\cos(\theta)| \approx 0.86$.
+	<li> $\mu$ measures vector "spread".
+	<li> $0 \leq \mu \leq 1$
+	<li> Lower value means more spread.
+      </ul>
+    </div>
+
+    <div class="pz_slide_right_panel">
+      <!--pzimg src="mc_plot_2.svg" height="420px"/-->
+      <img src="mc_plot_2.svg" height="420px">
+    </div>
+
+  </div>
+
+  <div class="pz_slide" id="slide_computation" section="computation">
+
+    <div class="pz_slide_heading">
+      <a href="#computation">
+	<h3>Computation</h3>
+      </a>
+    </div>
+
+    <div class="pz_slide_body" style="padding-top: 15px">
+      <ul>
+	<li> Normalize columns of $A$:
+	  <ul>
+	    <li> sum of squares = 1;
+	    <li> call $A_n$.
+	  </ul>
+	<li> $A_n^T A_n$:
+	  <ul>
+	    <li> has inner product of every pair of $A_n$'s columns;
+	    <li> largest inner product is $\mu(A)$;
+	    <li> (off-diagonal terms only).
+	  </ul>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="pz_slide" id="slide_bound" section="bound">
+
+    <div class="pz_slide_heading">
+      <a href="#useful_bound">
+	<h3>Bound</h3>
+      </a>
+    </div>
+    
+    <div class="pz_slide_left_panel" style="padding-top: 0px">
+      <ul>
+	<li> 3 vectors in 2 dimensions:
+	  <ul>
+	    <li> Minimum angle $\leq 120^\circ$
+	    <li> $\mu\geq 0.5$
+	  </ul>
+	<li> $N$ vectors in $M$ dimensions:
+	  $$
+	  \mu\geq\mu_0
+	  $$
+
+	  $$
+	  \mu_0 = \sqrt{\frac{N-M}{M(N-1)}}
+	  $$
+
+	  $$
+	  \frac{1}{M} \leq \mu_0 < \frac{1}{\sqrt M}
+	  $$
+
+	<li> Easier to achieve small $\mu$ for larger $M$.
+
+      </ul>
+
+    </div>
+
+    <div class="pz_slide_right_panel">
+      <!--pzimg src="bound_plot.svg" height="350px"/-->
+      <img src="bound_plot.svg" height="350px">
+    </div>
+
+  </div>
+
+</div>
