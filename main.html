@@ -34,7 +34,7 @@
 
   <h2 class="pz_section" id="intuition" ref="slide_3vec">Intuition</h2>
 
-  <pzthumb src="mc_plot_1.svg" ref="slide_3vec"/>
+  <pzthumb src="./python/mc_plot_1.svg" ref="slide_3vec"/>
 
   For example, say $A$ consists of a red, blue and green vector
 
@@ -70,7 +70,7 @@
   We can <span class="pz_text" ref="comp_size_note">compute</span>
   $\mu(A)$ by first normalizing the columns of $A$ to $A_n$,
   then <span class="pz_text" ref="mcoh_comp_note">choosing the largest
-  off-diagonal term of $A_n^T A_n$</span>. In Octave:
+  off-diagonal term of $A_n^T A_n$</span>. In CoffeeScript:
 
   <div class="pz_note" id="comp_size_note">
     For very large $A$ this method will be slow and require a lot of
@@ -82,6 +82,8 @@
     two normalized columns of $A$. The same normalized inner products
     that appear in the definition of $\mu(A)$ above.
   </div>
+
+  <div data-file="mcoh.coffee"></div>
 
   For example, using $A$ from above:
 
@@ -97,7 +99,7 @@
 
   <h2 class="pz_section" id="bound" ref="slide_bound">Bound</h2>
 
-  <pzthumb src="bound_plot.svg" ref="slide_bound"/>
+  <pzthumb src="./python/bound_plot.svg" ref="slide_bound"/>
 
   <span class="pz_text" ref="bruckstein_note">There is a limit to how
     well spread a collection of vectors can possibly be </span>.  The
