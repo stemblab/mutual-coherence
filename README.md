@@ -1,1 +1,1 @@
-![](https://github.com/stemblab/mutual-coherence/blob/gh-pages/thumb.png)
+![](https://github.com/stemblab/mutual-coherence/blob/gh-pages/python/thumb.png)
