@@ -1,4 +1,1 @@
-mutual-coherence
-================
-
-The mutual coherence, μ(A), of a matrix A characterizes the spread of its columns.
+![](https://github.com/stemblab/mutual-coherence/blob/gh-pages/thumb.png)
