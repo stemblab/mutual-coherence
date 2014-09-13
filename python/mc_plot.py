@@ -1,5 +1,3 @@
-#!puzlet
-
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -34,7 +32,7 @@ def summary(A,u,v):
     ax.yaxis.set_major_locator(majorLocator)
     ax.yaxis.set_major_formatter(majorFormatter)
     
-    return ax
+    return fig, ax
     
 def arc(ax, A, u,v):
     
@@ -46,12 +44,12 @@ def arc(ax, A, u,v):
     
     # annotation
     txt_ang=0.5*(angs[v]+angs[u]) # angle of annotating text
-    txt_mag=1.3*np.min(mags[:,np.ix_([u,v])]) # radius of text center
+    txt_mag=1.3*np.min(mags[np.ix_([u,v])]) # radius of text center
     txt_x=txt_mag*np.cos(txt_ang) # convert to x
     txt_y=txt_mag*np.sin(txt_ang) # convert to y
     
     # angle "arc"
-    w1 = Wedge((0,0), 0.5*np.min(mags[:,np.ix_([u,v])]), angs[v]*180/np.pi,
+    w1 = Wedge((0,0), 0.5*np.min(mags[np.ix_([u,v])]), angs[v]*180/np.pi,
         angs[u]*180/np.pi, 
         color='k', fill=False, zorder=0)
     ax.text(txt_x, txt_y, r"$\mu=|\cos (%.2f)|=%.4f$"%(np.abs(diff_ang),
@@ -59,17 +57,10 @@ def arc(ax, A, u,v):
         rotation=txt_ang*180/np.pi, va='center', ha='center')
     ax.add_artist(w1)
 
-#!end (15)
-
 if __name__=="__main__":
     
     A=np.array([[1,-1,1],[1,2,4]])
-    ax = summary(A,2,0)
-
-#!end (34)
-
-if __name__=="__main__": # Continued
+    fig, ax = summary(A,2,0)
+    fig.savefig("mc_plot_1.svg", transparent=True, bbox_inches='tight', pad_inches=0.15)
     arc(ax, A,2,0)
-
-#!end (23)
-
+    fig.savefig("mc_plot_2.svg", transparent=True, bbox_inches='tight', pad_inches=0.15)

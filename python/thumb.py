@@ -1,5 +1,3 @@
-#!puzlet
-
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -21,5 +19,5 @@ ax.axes.get_xaxis().set_visible(False)
 ax.set_xlim([0,1])
 ax.set_ylim([0,1])
 
-#!end (38)
+fig.savefig("thumb.png", transparent=True, bbox_inches='tight', pad_inches=0.15)
 
