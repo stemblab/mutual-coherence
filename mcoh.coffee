@@ -6,4 +6,3 @@ $blab.mcoh = (A) ->
     cloak = nm.rep([N, N], 1) - eye(N)
     offDiagInProd = abs(An.transjugate().dot(An))*cloak
     maxAll(offDiagInProd)
-

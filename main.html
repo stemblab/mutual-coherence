@@ -1,15 +1,16 @@
 <div id="text">
 
   <h2 class="pz_section" id="introduction"
-  ref="slide_introduction">Introduction </h2>
+      ref="slide_introduction">Mutual Coherence </h2>
 
   The
   [http://en.wikipedia.org/wiki/Mutual_coherence_(linear_algebra),mutual
   coherence], $\mu(A)$, of a matrix $A$ characterizes the spread of
   its columns, and is useful in the theory and application of
-  [/?id=b007z,compressive sensing]. Roughly speaking, it is the cosine
-  of the minimum angle between any two columns of $A$. More precisely,
-  the mutual coherence is the maximum absolute value of the
+  [http://en.wikipedia.org/wiki/Compressed_sensing,compressive
+  sensing]. Roughly speaking, it is the cosine of the minimum angle
+  between any two columns of $A$. More precisely, the mutual coherence
+  is the maximum absolute value of the
   <span class="pz_text" ref="angle_note">inner product between any two
     normalized columns </span> $a_j$ and $a_k$:
 
@@ -32,7 +33,7 @@
     cosine of the angle between those columns/vectors.
   </div>
 
-  <h2 class="pz_section" id="intuition" ref="slide_3vec">Intuition</h2>
+  <h3 class="pz_section" id="intuition" ref="slide_3vec">Intuition</h3>
 
   <pzthumb src="./python/mc_plot_1.svg" ref="slide_3vec"/>
 
@@ -63,9 +64,9 @@
   absolute value of the cosine is $\mu \approx 0.86$. Lets now
   consider how to compute $\mu(A)$ in practice.
 
-  <h2 class="pz_section" id="computation" ref="slide_computation">
+  <h3 class="pz_section" id="computation" ref="slide_computation">
     Computation
-  </h2>
+  </h3>
 
   We can <span class="pz_text" ref="comp_size_note">compute</span>
   $\mu(A)$ by first normalizing the columns of $A$ to $A_n$,
@@ -85,7 +86,7 @@
 
   <div data-file="mcoh.coffee"></div>
 
-  For example, using $A$ from above:
+  For example, using $A$ from above (edit then ctrl+enter):
 
   <div class="left_col">
     <div data-file="main.coffee"></div>
@@ -97,7 +98,7 @@
 
   <div class="clear"></div>
 
-  <h2 class="pz_section" id="bound" ref="slide_bound">Bound</h2>
+  <h3 class="pz_section" id="bound" ref="slide_bound">Bound</h3>
 
   <pzthumb src="./python/bound_plot.svg" ref="slide_bound"/>
 
